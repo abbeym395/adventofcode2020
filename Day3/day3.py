@@ -6,13 +6,36 @@ with open("input.txt", "r") as f:
 xpos = 0
 trees = 0
 
-coords = map(lambda l: l.strip(), coords)
+coords = list(map(lambda l: l.strip(), coords))
 
 for line in coords:
     normalisedXPos = xpos % len(line)
     if line[normalisedXPos] == '#':
         trees += 1
-    print(xpos, normalisedXPos, line[normalisedXPos])
     xpos += 3
 
-print("Trees:", trees)
+print("Part 1 trees:", trees)
+
+# Part 2
+import math
+
+def findTrees(x, y, coords):
+    trees = 0
+    xpos = 0
+    coords = coords[::y]
+    for line in coords:
+        normalisedXPos = xpos % len(line)
+        if line[normalisedXPos] == '#':
+            trees += 1
+        xpos += x
+    return trees
+
+results = []
+results.append(findTrees(1, 1, coords))
+results.append(findTrees(3, 1, coords))
+results.append(findTrees(5, 1, coords))
+results.append(findTrees(7, 1, coords))
+results.append(findTrees(1, 2, coords))
+
+print("The answers are:", results)
+print("The final answer is", math.prod(results))
