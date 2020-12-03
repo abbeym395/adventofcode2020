@@ -8,6 +8,7 @@ for line in expensesStrings:
     expenses.append(int(line[:-1]))
     
 expensesAsc = sorted(expenses)
+expensesDesc = sorted(expenses, reversed=True)
 
 print("For part 1")
 for item in expensesAsc:
@@ -18,3 +19,6 @@ for item in expensesAsc:
     
 print("For part 2")
 print(expensesAsc)
+
+firstItem = 0
+secondItem = 0
