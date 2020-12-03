@@ -8,7 +8,7 @@ for line in expensesStrings:
     expenses.append(int(line[:-1]))
     
 expensesAsc = sorted(expenses)
-expensesDesc = sorted(expenses, reversed=True)
+expensesDesc = sorted(expenses, reverse=True)
 
 print("For part 1")
 for item in expensesAsc:
@@ -18,7 +18,10 @@ for item in expensesAsc:
         break
     
 print("For part 2")
-print(expensesAsc)
 
-firstItem = 0
-secondItem = 0
+for firstItem in expensesAsc:
+    for secondItem in expensesDesc:
+        #print(firstItem, secondItem, newNumber)
+        if 2020 - firstItem - secondItem in expensesAsc:
+            print("Numbers are", firstItem, secondItem, "and", 2020 - firstItem - secondItem)
+            print("Solution is", firstItem * secondItem * (2020 - firstItem - secondItem))
